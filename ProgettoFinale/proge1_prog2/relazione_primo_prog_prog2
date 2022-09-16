@@ -1,0 +1,17 @@
+Ho scelto di implementare il contenitore utilizzando prima una hash map e nella seconda implementazione una tree map.
+Ho quindi proggettato  il SecureDataContainer<E>  come una funzione che ha come dominio un insieme di stringhe che rappresentano l'id degli
+utenti e come codominio un insieme di  contenitori che conterranno singolarmente una coppia costituita dalla password dell' utente e una lista di dati a lui associati.
+Il singolo dato e' poi costituito da una tripla contenente il dato di tipo E, il numero delle copie di questo dato  e una lista di utenti che possono accedere al dato.
+Essendo il dominio della funzione costituito solo dall' id dell' utente , quest'ultimo sara' identificato solamente dal suo id e quindi non potranno esistere 2 utenti con lo stesso id.
+L'unico modo per copiare un dato e' attraverso il metodo copy, infatti cercare di inserire un dato gia' presente nella lista di dati associati ad un utente portera' ad una eccezione.
+Il metodo getSize restituira' il numero di dati  correlati ad un utente comprese le copie
+Il metodo share consentira' la copia del dato che si vuole condividere solo se l'utente con cui lo si vuole condividere comparira' sia tra gli Id presenti nella struttura che nella lista degli utenti che possono accedere al suddetto dato. 
+Il metodo remove  rimuovera' solo una copia del dato nel caso in cui e' presente nella lista dei dati dell'utente interessato in piu' copie
+altrimenti se e' presente solo una copia , verra' rimossa tutta la tripla correlata a suddetto dato.
+Il metodo ausiliario putUammesso e' stato inserito per consentire il riempimento della lista degli utenti che possono accedere ad un dato.
+IL metodo getIterator richiamera la classe iteratorDati che otre al costruttore che riceve come parametro la lista dei dati dell'utente interessato ha al suo interno una classe privata che implementa il vero e propio iteratore che avra' come metodi utilizzabili  solo hasNext e next. Chiamare una remove portera' al sollevamento di una UnsupportedOperationException.
+Il metodo next restituira' tutti i dati correlati all' utente interesato comprese le copie .
+La classe Main e' utilizzata come batteria di test che portera' alla visione del funzionamento di tutti i metodi con annesse eccezioni .
+Per visionare il funzionameto di entrambe l' implementazioni sostituire la dichiarazione della variabile contenitore da 
+MySecureDataConteinerTM<String> contenitore = new MySecureDataConteinerTM<String>() a MySecureDataConteinerH<String> contenitore = new MySecureDataConteinerH<String>().
+ 
